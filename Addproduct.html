@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Product</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+     :root {
+      --primary-green: #00b894;
+      --light-green: #dffaf4;
+      --dark-text: #2d3436;
+      --light-gray: #f2f2f2;
+    }
+
+   body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('background.jpg') no-repeat center center/cover;
+}
+
+   .wrapper {
+  display: flex;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 90%;
+  max-width: 1100px;
+  height: auto;
+  min-height: 85vh;
+}
+
+
+    .logo-side {
+      background: var(--primary-green);
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      flex: 1;
+      color: white;
+    }
+
+    .logo-side img {
+      /* max-width: 100%; */
+      width:30rem;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    
+
+    .container {
+      /* flex: 1; */
+      width:50%;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: var(--dark-text);
+      color: #333;
+      font-weight: 600;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: 0.3s;
+      background-color: #f9f9f9;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      border-color: var(--primary-green);
+      outline: none;
+      box-shadow: 0 0 5px var(--primary-green);
+      background-color: white;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary-green);
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #913d35;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: var(--dark-text);
+    }
+
+    p a {
+      color: var(--primary-green);
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    p a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .logo-side {
+        padding: 20px;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="logo-side">
+      <img src="T-removebg-preview.png" alt="Takhleeq Logo">
+    </div>
+
+    <div class="container">
+      <h2>Upload Product</h2>
+      <form action="AddProduct.php" method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+          <label for="name">Product Name</label>
+          <input type="text" id="name" name="name" placeholder="Product name" required>
+        </div>
+        <div class="input-group">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="" disabled selected>Select Category</option>
+            <option value="Pottery & Ceramics">Pottery & Ceramics</option>
+            <option value="Handwoven Rugs">Handwoven Rugs</option>
+            <option value="Peshawari Chappal">Peshawari Chappal</option>
+            <option value="Ajrak & Block Printing">Ajrak & Block Printing</option>
+            <option value="Handmade Jewelry">Handmade Jewelry</option>
+            <option value="Truck Art Items">Truck Art Items</option>
+            <option value="Leather Goods">Leather Goods</option>
+            <option value="Calligraphy Art">Calligraphy Art</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="price">Price</label>
+          <input type="number" id="price" name="price" placeholder="Price in USD" required>
+        </div>
+        <div class="input-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" name="description" placeholder="Short description" required>
+        </div>
+        <div class="input-group">
+          <label for="image">Product Image</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button class="btn" type="submit">Upload Product</button>
+        <p><a href="Home.php">Go back to Home</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minimal Sign Up</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+            url('background.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -5;
+      opacity: +10;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .logo-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      flex: 1;
+    }
+
+    .logo-side img {
+      width: 30rem;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .container {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      height: auto;
+      min-height: 30rem;
+    }
+
+    .badge {
+      color: white;
+      padding: 6px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: white;
+      font-weight: 600;
+      font-size: 24px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      text-align: left;
+      position: relative;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      color: white;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      border-color: #333;
+      outline: none;
+    }
+
+    .error-msg {
+      color:aqua;
+      /* color: #f06f6f; */
+      font-size: 12px;
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #974841;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #974841;
+    }
+
+    p {
+      margin-top: 14px;
+      font-size: 14px;
+      color: white;
+    }
+
+    p a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    p a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .logo-side {
+        padding: 20px;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="logo-side">
+      <img src="T-removebg-preview.png" alt="TAKHLEEQ Logo">
+    </div>
+
+    <div class="container">
+      <span class="badge">Create Account</span>
+      <h2>Sign Up as Customer or Seller</h2>
+      <form id="signupForm" action="signup.php" method="POST">
+  <div class="input-group">
+    <label for="role">Account Type</label>
+    <select id="role" name="role" required>
+      <option value="">Select Role</option>
+      <option value="customer">Customer</option>
+      <option value="seller">Seller</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required>
+  </div>
+  <div class="input-group">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+  </div>
+  <div class="input-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+  </div>
+  <div class="input-group">
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+  </div>
+  <button class="btn" type="submit">Sign Up</button>
+  <p>Already have an account? <a href="login.html">Login</a></p>
+</form>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("signupForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Remove previous errors
+        document.querySelectorAll(".error-msg").forEach(el => el.remove());
+
+        const role = document.getElementById("role").value.trim();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+        let valid = true;
+
+        if (!role) {
+          showError("role", "Please select an account type.");
+          valid = false;
+        }
+
+        if (!name) {
+          showError("name", "Please enter your full name.");
+          valid = false;
+        }
+
+        if (!email || !validateEmail(email)) {
+          showError("email", "Please enter a valid email address.");
+          valid = false;
+        }
+
+        if (!password) {
+          showError("password", "Please enter a password.");
+          valid = false;
+        } else if (password.length < 6) {
+          showError("password", "Password must be at least 6 characters.");
+          valid = false;
+        }
+
+        if (!confirmPassword) {
+          showError("confirmPassword", "Please confirm your password.");
+          valid = false;
+        } else if (password !== confirmPassword) {
+          showError("confirmPassword", "Passwords do not match.");
+          valid = false;
+        }
+
+        if (valid) {
+  // Save user info in localStorage
+  localStorage.setItem('userEmail', email);
+  localStorage.setItem('userPassword', password);
+
+  // Redirect to login
+  window.location.href = "login.html";
+}
+
+
+        function showError(fieldId, message) {
+          const field = document.getElementById(fieldId);
+          const error = document.createElement("div");
+          error.className = "error-msg";
+          error.innerText = message;
+          field.parentNode.appendChild(error);
+        }
+
+        function validateEmail(email) {
+          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return regex.test(email);
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <style>
+   body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('background.jpg') center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(37, 36, 36, 0.774);
+}
+
+.navbar .home,
+.navbar .search {
+  position: absolute;
+  top: 20px;
+}
+
+.navbar .home {
+  left: 30px;
+}
+
+.navbar .search {
+  right: 30px;
+}
+
+.navbar .home button,
+.cart-buttons button {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.navbar .home button:hover,
+.cart-buttons button:hover {
+  background-color: #a14e46;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .logo img {
+  width: 25rem;
+  height: 25rem;
+  object-fit: contain;
+}
+
+.navbar input {
+  width: 220px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  background-color: #fafafa;
+  transition: box-shadow 0.2s ease;
+}
+
+.navbar input:focus {
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3);
+}
+
+
+h2 {
+  color: #333;
+  margin: 30px 30px 10px;
+  font-weight: 600;
+}
+
+.cart-item {
+  background-color: #f9f9f9;
+  margin: 15px 30px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-left img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.item-details {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.controls button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #333;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.controls button:hover {
+  color: #9c4e47;
+}
+
+.controls strong {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  margin-top: 30px;
+  background-color: white;
+  border-top: 1px solid #eaeaea;
+}
+
+.cart-buttons button,
+.checkout-section button {
+  /* background-color: #7B2D26; */
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-right: 10px;
+}
+
+.checkout-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.checkout-section button:hover {
+  background-color: #7B2D26;
+  transform: translateY(-2px);
+}
+
+
+  </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="home">
+          <a href="Home.php"><button>Home</button></a>
+        </div>
+      
+        <div class="logo">
+          <img src="T-removebg-preview.png" alt="Logo">
+        </div>
+      
+        <div class="search">
+          <input type="text" placeholder="🔍 Search">
+        </div>
+      </div>
+      
+
+  <h2>Your Cart</h2>
+
+  <div id="cart-container">
+    <!-- Items will be added here -->
+  </div>
+
+  <div class="cart-footer">
+    <div class="cart-buttons">
+      <a href="Home.php"><button>Cont Shopping</button></a>
+    </div>
+    <div class="checkout-section">
+      <a href="Checkout.html"><button>CheckOut</button></a>
+      <div class="total-price" id="total-price">Total: $0</div>
+    </div>
+  </div>
+  
+  
+
+  <script>
+    const cartItems = [
+      { name: "Tea Cup", price: 2, size: "Medium", color: "Blue", quantity: 1, image: "Pics/cup-8735182.jpg" },
+      { name: "Basket", price: 2, size: "Medium", color: "Blue", quantity: 1, image: "Pics/basket-6947094.jpg" }
+    ];
+
+    const container = document.getElementById("cart-container");
+    const totalPriceDiv = document.getElementById("total-price");
+
+    function renderCart() {
+      container.innerHTML = "";
+      let total = 0;
+
+      cartItems.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <div class="item-left">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-details">
+              ${item.name}<br>
+              Price : $${item.price}<br>
+              Size : ${item.size}<br>
+              Color : ${item.color}
+            </div>
+          </div>
+          <div class="controls">
+            <button onclick="updateQty(${index}, -1)">-</button>
+            ${item.quantity}
+            <button onclick="updateQty(${index}, 1)">+</button>
+            <button onclick="removeItem(${index})">🗑️</button>
+            <strong>$${itemTotal}</strong>
+          </div>
+        `;
+        container.appendChild(itemDiv);
+      });
+
+      totalPriceDiv.textContent = `Total: $${total}`;
+    }
+
+    function updateQty(index, change) {
+      if (cartItems[index].quantity + change > 0) {
+        cartItems[index].quantity += change;
+        renderCart();
+      }
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      renderCart();
+    }
+    function checkout() {
+  alert("Thank you for your purchase!");
+  localStorage.removeItem("cartItems");
+  window.location.href = "Home.html"; // Or thank-you page
+}
+
+
+    renderCart();
+  </script>
+
+</body>
+</html>

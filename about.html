@@ -1,0 +1,181 @@
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333333;
+    }
+  
+    header {
+     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+            url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      height: 300px; /* Reduced height */
+    }
+  
+    .header-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 20px; /* Space between the buttons */
+    }
+  
+    .logo-text {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+    .back-button,
+    .contact-button {
+       display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 20px;
+    transition: background-color 0.3s ease;
+    }
+  
+    .back-button:hover,
+    .contact-button:hover {
+      background-color: #218838;
+    }
+  
+    .card-section {
+      background-color: white;
+      margin: 40px auto;
+      padding: 40px;
+      max-width: 1100px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .text-box {
+      flex: 1 1 450px;
+    }
+  
+    .text-box h2 {
+      color: #00b386;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+  
+    .text-box p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+  
+    .image-box {
+      flex: 1 1 300px;
+    }
+  
+    .image-box img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00b386;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+  
+    .btn:hover {
+      background-color: #009973;
+    }
+  
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  
+    @media (max-width: 768px) {
+      .card-section {
+        padding: 20px;
+        flex-direction: column;
+      }
+  
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      .logo-text {
+        font-size: 2rem;
+      }
+  
+      .header-buttons {
+        flex-direction: column;
+        top: 10px;
+        left: 10px;
+        gap: 10px;
+      }
+    }
+  </style>
+  
+  <body>
+    <header>
+      <span class="logo-text">ABOUT TAKHLEEQ</span>
+      <div class="header-buttons">
+        <a href="Home.php" class="back-button">Home</a>
+        <a href="contact.html" class="contact-button">Contact Us</a>
+      </div>
+    </header>
+  
+    <section class="card-section">
+      <div class="text-box">
+        <h2>Our Story</h2>
+        <p>
+          Takhleeq is where tradition meets creativity. Our mission is to promote handmade art that tells a story. 
+          With love and skill, each product is crafted by artisans who put heart into every detail.
+        </p>
+      </div>
+      <div class="image-box">
+        <img src="picture1.jpg" alt="Handmade Art">
+      </div>
+    </section>
+  
+    <section class="card-section">
+      <div class="image-box">
+        <img src="pic3.jpg" alt="Crafting with Love">
+      </div>
+      <div class="text-box">
+        <h2>What We Offer</h2>
+        <p>
+          Our collection includes elegant handmade decor, personalized gifts, and artistic accessories. 
+          Takhleeq celebrates individuality through timeless pieces that enhance your home and lifestyle.
+        </p>
+        <a href="Home.php" class="btn">Explore Collection</a>
+      </div>
+    </section>
+  
+    <footer>
+      &copy; 2025 Takhleeq. Crafted with soul.
+    </footer>
+  </body>
+  
